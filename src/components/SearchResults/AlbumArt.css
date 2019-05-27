@@ -1,0 +1,11 @@
+.artContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.art {
+    width: 200px;
+    height: 200px;
+}

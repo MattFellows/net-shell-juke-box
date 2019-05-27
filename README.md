@@ -1,3 +1,6 @@
+I'm making use of: https://www.npmjs.com/package/spotify-web-api-node#usage to integrate with spotify.
+Client Secret and Client ID already harcoded into the app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
