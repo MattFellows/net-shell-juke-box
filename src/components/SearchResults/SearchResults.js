@@ -1,5 +1,5 @@
 import React from "react";
-import SearchResultsContainer from "./SearchhResultsContainer";
+import SearchResultsContainer from "./SearchResultsContainer";
 import './SearchResults.css';
 
 

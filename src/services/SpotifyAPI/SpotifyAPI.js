@@ -61,20 +61,40 @@ class SpotifyAPIService {
         return this.SpotifyAPI.searchTracks(search);
     }
 
+    addTrackToPlaylist(uri) {
+        this.getPlaylist().then(playlist => {
+            this.SpotifyAPI.getPlaylistTracks(playlist.id).then(tracks => {
+                const existingTrack = tracks.items.find(i => i.track.uri === uri);
+                if (!existingTrack) {
+                    this.SpotifyAPI.addTracksToPlaylist(playlist.id, [uri]).then(existingTrack => {
+                        this.positionNextToPlay(existingTrack);
+                    });
+                } else {
+                    this.positionNextToPlay(existingTrack);
+                }
+            });
+        });
+    }
+
+    positionNextToPlay(existingTrack) {
+        this.getPlaylist().then(playlist => {
+            this.SpotifyAPI.getPlaylistTracks(playlist.id).then(tracks => {
+                this.getCurrentTrack().then(currentlyPlayingTrack => {
+                    debugger;
+                    const currentlyPlayingTrackInTracks = tracks.items.find(t => t.track.uri === currentlyPlayingTrack.item.uri);
+                    const currentlyPlayingTrackPosition = tracks.items.indexOf(currentlyPlayingTrackInTracks);
+                    const existingTrackinTracks = tracks.items.find(t => t.track.uri === existingTrack.track.uri);
+                    const tracksCurrentPositionInPlaylist = tracks.items.indexOf(existingTrackinTracks);
+                    this.SpotifyAPI.reorderTracksInPlaylist(playlist.id, tracksCurrentPositionInPlaylist, currentlyPlayingTrackPosition ? currentlyPlayingTrackPosition + 1 : tracks.items.length);
+                });
+            });
+        });
+    }
+
     addToPlaylist({type, uri}) {
         switch(type) {
             case 'Tracks':
-                this.getPlaylist().then(playlist => {
-                    this.SpotifyAPI.getPlaylistTracks(playlist.id).then(tracks => {
-                        const existingTrack = tracks.items.find(i => i.track.uri === uri);
-                        if (existingTrack) {
-                            const tracksCurrentPositionInPlaylist = tracks.items.indexOf(existingTrack);
-                            this.SpotifyAPI.reorderTracksInPlaylist(playlist.id, tracksCurrentPositionInPlaylist, tracks.items.length);
-                        } else {
-                            this.SpotifyAPI.addTracksToPlaylist(playlist.id, [uri]);
-                        }
-                    });
-                })
+                this.addTrackToPlaylist(uri);
                 break;
             case 'Albums':
             case 'Artists':
@@ -93,7 +113,7 @@ class SpotifyAPIService {
 
     getPlaylist() {
         if (this.partyPlaylist) {
-            return this.partyPlaylist;
+            return new Promise((resolve, reject) => resolve(this.partyPlaylist));
         }
         return this.getMe().then(me => {
             this.me = me;
@@ -122,12 +142,10 @@ class SpotifyAPIService {
     getCurrentTrack() {
         return this.SpotifyAPI.getMyCurrentPlayingTrack()
             .then(res => {
-                console.log('Success getting current track:', res);
                 return new Promise((resolve, rej) => {
                     resolve(res);
                 });
             }, res => {
-                console.log('Error getting current track:', res);
                 return new Promise((resolve, reject) => {
                     reject(res);
                 });

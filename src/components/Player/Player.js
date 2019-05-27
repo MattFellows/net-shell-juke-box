@@ -3,6 +3,7 @@ import React from "react";
 import SpotifyAPIService from '../../services/SpotifyAPI/SpotifyAPI';
 import {ReactComponent as Play} from './play.svg'
 import {ReactComponent as Pause} from './pause.svg'
+import './Player.css';
 
 export default class Player extends React.Component{
 
@@ -54,8 +55,8 @@ export default class Player extends React.Component{
                 {this.state.currentTrack && this.state.currentTrack.item &&
                     (
                         <AlbumArt type={'Now Playing'} result={this.state.currentTrack.item} albumImage={this.state.currentTrack.item.album && this.state.currentTrack.item.album.images && this.state.currentTrack.item.album.images.find(i => i.height === 300)} name={this.state.currentTrack.item.name}>
-                            {this.state.currentTrack && this.state.currentTrack.item && this.state.playing && (<div className={'pause'} onClick={() => {this.pause()}}><Pause style={{width: '100px', height: '100px'}}/></div>)}
-                            {this.state.currentTrack && this.state.currentTrack.item && !this.state.playing && (<div className={'play'} onClick={() => {this.play()}}><Play style={{width: '100px', height: '100px'}}/></div>)}
+                            {this.state.currentTrack && this.state.currentTrack.item && this.state.playing && (<div className={'playpause pause'} onClick={() => {this.pause()}}><Pause style={{width: '200px', height: '200px'}}/></div>)}
+                            {this.state.currentTrack && this.state.currentTrack.item && !this.state.playing && (<div className={'playpause play'} onClick={() => {this.play()}}><Play style={{width: '200px', height: '200px'}}/></div>)}
                         </AlbumArt>
                     )
                 }

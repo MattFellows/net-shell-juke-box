@@ -10,8 +10,8 @@ export default class SearchResultsContainer extends React.Component {
             <React.Fragment>
                 <h1>{this.props.containerName}</h1>
                 <div className={"ResultsContainer"}>
-                    {this.props.results && this.props.results.map(result => (
-                        <ContextMenuWrapper type={this.props.containerName} result={result}>
+                    {this.props.results && this.props.results.map((result, index) => (
+                        <ContextMenuWrapper type={this.props.containerName} result={result} key={`ContextMenuWrapper-${index}`}>
                             <AlbumArt type={this.props.containerName} result={result} albumImage={result.images ? result.images.find(i => i.height === 300) : result.album.images.find(i => i.height === 300)} name={result.name}/>
                         </ContextMenuWrapper>
 
