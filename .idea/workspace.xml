@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9177185-0faa-4519-a874-9031c33689f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/AuthSuccess.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Player/Player.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Router/Router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Search/Search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResults/AlbumArt.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResults/AlbumArt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResults/ContextMenuWrapper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResults/SearchResults.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResults/SearchResults.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResults/react-contextmenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/SpotifyAPI/SpotifyAPI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Router/Router.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Router/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResults/AlbumArt.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResults/AlbumArt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/SpotifyAPI/SpotifyAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/SpotifyAPI/SpotifyAPI.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Search/Search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+            <state relative-caret-position="301">
+              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -115,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/SpotifyAPI/SpotifyAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="90" column="12" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="12" />
+            <state relative-caret-position="1024">
+              <caret line="114" column="19" lean-forward="true" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -161,12 +141,12 @@
       <find>results</find>
       <find>this.SpotifyAPI</find>
       <find>this.SpotifyAPI8B32 9C38 1C7F A8E6 D529 D258 231A A770 8E64 0B8C</find>
-      <find>debugger</find>
       <find>8B32 9C38 1C7F A8E6 D529 D258 231A A770 8E64 0B8C</find>
       <find>.results</find>
       <find>user-mo</find>
       <find>playback</find>
       <find>SearchResultsContainer</find>
+      <find>debugger</find>
     </findStrings>
     <replaceStrings>
       <replace>this.SpotifyAPI</replace>
@@ -193,13 +173,13 @@
         <option value="$PROJECT_DIR$/src/components/Auth/Auth.js" />
         <option value="$PROJECT_DIR$/src/components/SearchResults/SearchResults.js" />
         <option value="$PROJECT_DIR$/src/components/Auth/AuthSuccess.js" />
-        <option value="$PROJECT_DIR$/src/components/Search/Search.js" />
         <option value="$PROJECT_DIR$/src/components/Player/Player.js" />
         <option value="$PROJECT_DIR$/src/components/SearchResults/ContextMenuWrapper.js" />
         <option value="$PROJECT_DIR$/src/components/SearchResults/SearchhResultsContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/SearchResults/AlbumArt.js" />
         <option value="$PROJECT_DIR$/src/components/Router/Router.js" />
         <option value="$PROJECT_DIR$/src/services/SpotifyAPI/SpotifyAPI.js" />
+        <option value="$PROJECT_DIR$/src/components/SearchResults/AlbumArt.js" />
+        <option value="$PROJECT_DIR$/src/components/Search/Search.js" />
       </list>
     </option>
   </component>
@@ -332,12 +312,12 @@
       <workItem from="1554543327399" duration="14008000" />
       <workItem from="1555055523479" duration="8891000" />
       <workItem from="1556013162624" duration="1004000" />
-      <workItem from="1558795527325" duration="25315000" />
+      <workItem from="1558795527325" duration="25671000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49218000" />
+    <option name="totallyTimeSpent" value="49574000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="27" y="23" width="1400" height="804" extended-state="0" />
@@ -512,16 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Search/Search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SearchResults/ContextMenuWrapper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -539,13 +509,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SearchResults/AlbumArt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -568,8 +531,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/SpotifyAPI/SpotifyAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="90" column="12" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="12" />
+        <state relative-caret-position="1024">
+          <caret line="114" column="19" lean-forward="true" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SearchResults/AlbumArt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Search/Search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

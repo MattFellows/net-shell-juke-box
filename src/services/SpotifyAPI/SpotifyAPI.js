@@ -34,7 +34,6 @@ class SpotifyAPIService {
 
 
     handleLogin() {
-        console.log(window.location.hash);
         if (window.location.hash) {
             const params = window.location.hash.match(/.*#(.*)/)[1].split('&').map(pairs => {
                 const parts = pairs.split('=');
@@ -43,10 +42,9 @@ class SpotifyAPIService {
             console.log(params);
             if (params && Array.isArray(params)) {
                 const paramsObj = this.arrayToObject(params);
-                console.log(paramsObj);
                 this.sessionStorage.token = paramsObj['access_token'];
                 this.SpotifyAPI.setAccessToken(this.sessionStorage.token);
-                console.log(this.SpotifyAPI.getAccessToken());
+                console.log('Expires in: ', paramsObj['expires_in']);
             }
         }
         return this.SpotifyAPI.getAccessToken();
@@ -70,12 +68,10 @@ class SpotifyAPIService {
         switch(type) {
             case 'Tracks':
                 this.getPlaylist().then(playlist => {
-                    debugger;
                     console.log(playlist);
                     this.SpotifyAPI.getPlaylistTracks(playlist.id).then(tracks => {
                         console.log(tracks);
                         const existingTrack = tracks.items.find(i => i.track.uri === uri);
-                        debugger;
                         if (existingTrack) {
                             const tracksCurrentPositionInPlaylist = tracks.items.indexOf(existingTrack);
                             this.SpotifyAPI.reorderTracksInPlaylist(playlist.id, tracksCurrentPositionInPlaylist, tracks.items.length);
@@ -105,10 +101,8 @@ class SpotifyAPIService {
             return this.partyPlaylist;
         }
         return this.getMe().then(me => {
-            debugger;
             console.log(me);
             return this.SpotifyAPI.getUserPlaylists(me.id).then(playlistsResponse => {
-                debugger;
                 console.log(playlistsResponse);
                 const partyPlaylist = playlistsResponse.items.find(p => p.name === PLAYLIST_NAME);
                 if (partyPlaylist) {

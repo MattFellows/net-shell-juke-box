@@ -9,7 +9,6 @@ export default class AlbumArt extends React.Component {
         console.log('Data: ', data);
         switch (data.action) {
             case 'addToParty':
-                debugger;
                 SpotifyAPIService.addToPlaylist({type:data.type, uri:data.uri});
                 break;
             default:

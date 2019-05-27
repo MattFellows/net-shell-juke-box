@@ -35,9 +35,18 @@ class Search extends Component {
                     }
             };
             console.log('newState: ', newState);
-            this.setState(newState)
+            this.setState(newState);
             return newState.results;
-        }).catch(e => console.log(e));
+        }).catch(e => {
+            console.log(e);
+            this.setState({results:
+                    {
+                        tracks: [],
+                        albums: [],
+                        artists: [],
+                        playlists: [],
+                    }});
+        });
     }
 
     render() {
