@@ -7,8 +7,6 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-    console.log('State: ', state);
-    console.log('Router: ', action);
     switch (action.type) {
         case TYPES.SET_TOKEN:
             return {

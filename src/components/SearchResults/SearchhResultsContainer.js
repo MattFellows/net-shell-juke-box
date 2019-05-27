@@ -4,11 +4,6 @@ import AlbumArt from "./AlbumArt";
 import ContextMenuWrapper from "./ContextMenuWrapper";
 
 export default class SearchResultsContainer extends React.Component {
-    constructor(props) {
-        super(props);
-
-        console.log(`Rendering ${this.props.containerName} with results: `, this.props.results);
-    }
 
     render() {
         return (

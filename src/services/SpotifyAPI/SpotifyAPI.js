@@ -39,12 +39,10 @@ class SpotifyAPIService {
                 const parts = pairs.split('=');
                 return {key: parts[0], value: parts[1]}
             });
-            console.log(params);
             if (params && Array.isArray(params)) {
                 const paramsObj = this.arrayToObject(params);
                 this.sessionStorage.token = paramsObj['access_token'];
                 this.SpotifyAPI.setAccessToken(this.sessionStorage.token);
-                console.log('Expires in: ', paramsObj['expires_in']);
             }
         }
         return this.SpotifyAPI.getAccessToken();
@@ -60,17 +58,14 @@ class SpotifyAPIService {
         return this.SpotifyAPI.searchPlaylists(search);
     }
     searchTracks(search)  {
-        let trackSearchResponsePromise = this.SpotifyAPI.searchTracks(search);
-        return trackSearchResponsePromise;
+        return this.SpotifyAPI.searchTracks(search);
     }
 
     addToPlaylist({type, uri}) {
         switch(type) {
             case 'Tracks':
                 this.getPlaylist().then(playlist => {
-                    console.log(playlist);
                     this.SpotifyAPI.getPlaylistTracks(playlist.id).then(tracks => {
-                        console.log(tracks);
                         const existingTrack = tracks.items.find(i => i.track.uri === uri);
                         if (existingTrack) {
                             const tracksCurrentPositionInPlaylist = tracks.items.indexOf(existingTrack);
@@ -101,9 +96,8 @@ class SpotifyAPIService {
             return this.partyPlaylist;
         }
         return this.getMe().then(me => {
-            console.log(me);
+            this.me = me;
             return this.SpotifyAPI.getUserPlaylists(me.id).then(playlistsResponse => {
-                console.log(playlistsResponse);
                 const partyPlaylist = playlistsResponse.items.find(p => p.name === PLAYLIST_NAME);
                 if (partyPlaylist) {
                     this.partyPlaylist = partyPlaylist;
@@ -118,19 +112,37 @@ class SpotifyAPIService {
     }
 
     play() {
-        this.SpotifyAPI.play();
+        return this.SpotifyAPI.play();
     }
 
     pause() {
-        this.SpotifyAPI.pause();
+        return this.SpotifyAPI.pause();
     }
 
     getCurrentTrack() {
-        return this.SpotifyAPI.getMyCurrentPlayingTrack();
+        return this.SpotifyAPI.getMyCurrentPlayingTrack()
+            .then(res => {
+                console.log('Success getting current track:', res);
+                return new Promise((resolve, rej) => {
+                    resolve(res);
+                });
+            }, res => {
+                console.log('Error getting current track:', res);
+                return new Promise((resolve, reject) => {
+                    reject(res);
+                });
+            })
+            .catch(e => {
+                this.handleNotLoggedIn()
+            });
     }
 
     isCurrentlyPlaying() {
-        return this.SpotifyAPI.getMyCurrentPlaybackState()
+        return this.SpotifyAPI.getMyCurrentPlaybackState().catch(this.handleNotLoggedIn);
+    }
+
+    handleNotLoggedIn() {
+        this.login();
     }
 
 }

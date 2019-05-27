@@ -1,15 +1,15 @@
-import React, {Component,Fragment} from 'react';
+import React, {Component} from 'react';
 import SearchResults from "../SearchResults/SearchResults";
 import {connect} from "react-redux";
 import SpotifyAPIService from "../../services/SpotifyAPI/SpotifyAPI";
 import Player from "../Player/Player";
+import './Search.css';
 
 class Search extends Component {
 
     constructor(props) {
         super(props);
 
-        console.log('Token:', SpotifyAPIService.SpotifyAPI.getAccessToken());
         this.state = {
             results: {
                 albums: [], artists: [], playlists: [], tracks: [],
@@ -34,7 +34,6 @@ class Search extends Component {
                         playlists: playlistResults.playlists.items,
                     }
             };
-            console.log('newState: ', newState);
             this.setState(newState);
             return newState.results;
         }).catch(e => {
@@ -51,11 +50,13 @@ class Search extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div className={'search'}>
                 <Player/>
+                <div>
                 Search: <input ref={(input) => this.searchInput = input} onChange={this.search}/>
+                </div>
                 <SearchResults {...this.state.results}/>
-            </Fragment>)
+            </div>)
     }
 }
 
