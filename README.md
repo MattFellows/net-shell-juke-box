@@ -1,5 +1,7 @@
-I'm making use of: https://www.npmjs.com/package/spotify-web-api-node#usage to integrate with spotify.
-Client Secret and Client ID already harcoded into the app
+Clone the project with `--recurse-submodules` or if you've already cloned the project just run `git submodule update --init --recursive` to clone the auth server part of the project.
+
+I'm making use of: https://www.npmjs.com/package/spotify-web-api-js to integrate with spotify.
+Client Secret and Client ID already in the app config
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
