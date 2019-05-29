@@ -13,9 +13,23 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+And simultaneously;
+Starts the Auth server at [http://localhost:8888](http://localhost:8888). Navigate to [http://localhost:8888/api/login](http://localhost:8888/api/login) to log in...
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
+### `npm start-react`
+
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+### `npm start-auth`
+
+Starts the Auth server at [http://localhost:8888](http://localhost:8888). Navigate to [http://localhost:8888/api/login](http://localhost:8888/api/login) to log in...
 
 ### `npm test`
 
