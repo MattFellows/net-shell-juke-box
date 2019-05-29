@@ -1,0 +1,3 @@
+[submodule "spotify-auth-server"]
+	path = spotify-auth-server
+	url = https://github.com/MattFellows/spotify-auth-server.git

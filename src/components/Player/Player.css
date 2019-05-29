@@ -4,7 +4,14 @@
     background: rgba(100,100,100,0.5);
 }
 
-.playpause circle, .playpause polygon, .playpause path {
-    color: white;
+.playpause path {
+    fill: white;
+}
+
+.playpause circle {
+    stroke: white;
+}
+
+.playpause polygon {
     fill: white;
 }

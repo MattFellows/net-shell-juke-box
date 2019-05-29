@@ -1,0 +1,13 @@
+.chooseDevice {
+    background: #333;
+    border: 1px solid #222;
+    border-radius: 3px;
+    color: #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.chooseDevice:hover {
+    border: 1px solid #ccc;
+    color: #aaa;
+}

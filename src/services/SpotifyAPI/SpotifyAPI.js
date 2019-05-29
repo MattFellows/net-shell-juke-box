@@ -1,13 +1,12 @@
 import SpotifyWebApi from "spotify-web-api-js";
+import config from '../../conf/config';
 
 const PLAYLIST_NAME = 'NetShell Party Playlist';
 
 class SpotifyAPIService {
 
     constructor(accessToken) {
-        this.sessionStorage = {};
-        this.clientId = 'afc7874799bd46308170721748037e72';
-        this.redirectURI = 'http://netshell-jukebox.com:3000/AuthSuccess';
+        this.sessionStorage = {token:'', refreshToken: ''};
         this.SpotifyAPI = new SpotifyWebApi();
         if (accessToken) {
             this.SpotifyAPI.setAccessToken(accessToken);
@@ -17,12 +16,7 @@ class SpotifyAPIService {
     }
 
     login() {
-        var scopes = 'user-read-playback-state user-modify-playback-state user-read-recently-played user-top-read user-library-modify user-library-read playlist-read-private playlist-modify-public playlist-modify-private playlist-read-collaborative user-read-currently-playing app-remote-control streaming user-follow-read user-follow-modify';
-        document.location.href = ('https://accounts.spotify.com/authorize' +
-            '?response_type=token' +
-            '&client_id=' + this.clientId +
-            (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-            '&redirect_uri=' + encodeURIComponent(this.redirectURI));
+        document.location.href = config.AUTH_DOMAIN + '/api/login';
     }
 
     arrayToObject(array) {
@@ -30,6 +24,10 @@ class SpotifyAPIService {
             obj[item.key] = item.value;
             return obj
         }, {});
+    }
+
+    refreshToken() {
+        document.location.href = config.AUTH_DOMAIN + '/api/refresh_token?refresh_token=' + this.sessionStorage.refreshToken;
     }
 
 
@@ -42,10 +40,11 @@ class SpotifyAPIService {
             if (params && Array.isArray(params)) {
                 const paramsObj = this.arrayToObject(params);
                 this.sessionStorage.token = paramsObj['access_token'];
+                this.sessionStorage.refreshToken = paramsObj['refresh_token'];
                 this.SpotifyAPI.setAccessToken(this.sessionStorage.token);
             }
         }
-        return this.SpotifyAPI.getAccessToken();
+        return {token: this.sessionStorage.token, refreshToken: this.sessionStorage.refreshToken};
     }
 
     searchAlbums(search)  {
@@ -67,7 +66,9 @@ class SpotifyAPIService {
                 const existingTrack = tracks.items.find(i => i.track.uri === uri);
                 if (!existingTrack) {
                     this.SpotifyAPI.addTracksToPlaylist(playlist.id, [uri]).then(existingTrack => {
-                        this.positionNextToPlay(existingTrack);
+                        this.SpotifyAPI.getPlaylistTracks(playlist.id).then(tracks => {
+                            this.positionNextToPlay(tracks.items.find(i => i.track.uri === uri));
+                        });
                     });
                 } else {
                     this.positionNextToPlay(existingTrack);
@@ -160,7 +161,24 @@ class SpotifyAPIService {
     }
 
     handleNotLoggedIn() {
-        this.login();
+        if (this.sessionStorage.refreshToken && this.sessionStorage.refreshToken.length > 0) {
+            this.refreshToken();
+        } else {
+            this.login();
+            setTimeout(this.refreshToken, 20000);
+        }
+    }
+
+    getDevices() {
+        return this.SpotifyAPI.getMyDevices().then(devices => {
+            this.devices = devices.devices;
+            console.log(this.devices);
+            return this.devices;
+        })
+    }
+
+    transferToDevice(device) {
+        return this.SpotifyAPI.transferMyPlayback([device.id], {play: true});
     }
 
 }

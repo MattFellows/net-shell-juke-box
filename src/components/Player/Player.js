@@ -4,8 +4,10 @@ import SpotifyAPIService from '../../services/SpotifyAPI/SpotifyAPI';
 import {ReactComponent as Play} from './play.svg'
 import {ReactComponent as Pause} from './pause.svg'
 import './Player.css';
+import {connect} from "react-redux";
+import {addDevice} from '../../actions';
 
-export default class Player extends React.Component{
+class Player extends React.Component{
 
     constructor(props) {
         super(props);
@@ -21,6 +23,13 @@ export default class Player extends React.Component{
 
     updateCurrentTrackAndState = () => {
         SpotifyAPIService.getCurrentTrack().then(t => {
+            console.log(t);
+            SpotifyAPIService.getDevices().then(devices => {
+                console.log(devices);
+                devices.forEach(d => {
+                    this.props.addDevice(d);
+                });
+            })
             this.setState({currentTrack: t});
             SpotifyAPIService.isCurrentlyPlaying()
                 .then(s => {
@@ -64,3 +73,9 @@ export default class Player extends React.Component{
         );
     }
 }
+
+const mapDispatchhToProps = dispatch => ({
+   addDevice: (device) => dispatch(addDevice(device))
+});
+
+export default connect(null, mapDispatchhToProps)(Player);
